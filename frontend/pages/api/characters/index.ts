@@ -13,6 +13,7 @@ const charactersCtrl = async (req: NextApiRequest, res: NextApiResponse) => {
   const body: { data: LickApi.ICharacterCore[] } = {
     data: characters.data
   };
+  
   res.status(200).json(body);
 };
 

@@ -1,8 +1,19 @@
 import { NextPage } from 'next';
-import IntroTemplate from '../src/components/_templates/Intro';
+import { useEffect, useState } from 'react';
+import HomeTemplate from '@/components/Home/Home';
 
 const Home: NextPage = () => {
-  return <IntroTemplate title="Rick and Morty FE Tech Test" />;
+  const [characters, setCharacters] = useState<LickApi.ICharacterCore[]>([])
+
+  useEffect(() => {
+    fetch('/api/characters')
+      .then((res) => res.json())
+      .then((characters) => {
+        setCharacters(characters.data)
+      })
+  }, [])
+
+  return <HomeTemplate title="Rick and Morty FE Tech Test" characters={ characters } />;
 };
 
 export default Home;
