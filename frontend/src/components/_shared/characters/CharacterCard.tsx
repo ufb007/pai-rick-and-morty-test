@@ -13,7 +13,7 @@ const CharacterCard = ({ id, name, gender, species, avatar }: LickApi.ICharacter
                 <li>Gender: { gender }</li>
                 <li>Species: { species }</li>
             </ul>
-            <button className="uppercase bg-green text-black py-2" onClick={() => router.push(`/character/${id}`)}>View Profile</button>
+            <button className="uppercase bg-green text-black py-2 hover:font-schwifty" onClick={() => router.push(`/character/${id}`)}>View Profile</button>
         </CharacterContainer>
     )
 }

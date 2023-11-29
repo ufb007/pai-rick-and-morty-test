@@ -9,6 +9,9 @@ module.exports = {
     extend: {
       colors: {
         'green': '#6EC266'
+      },
+      fontFamily: {
+        'schwifty': ['get-schwifty', 'sans-serif']
       }
     },
   },
