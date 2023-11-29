@@ -1,7 +1,6 @@
 import Meta from "@/components/Meta";
 import CharacterCard from "@/components/characters/CharacterCard";
-import { HomeContainer, Wrapper } from "@/styles/Home/Home.styled";
-import Image from 'next/image'
+import { HomeContainer, Wrapper, LogoImg } from "@/styles/Home/Home.styled";
 
 interface IHomeTemplateProps {
     title: string;
@@ -13,7 +12,10 @@ const HomeTemplate: React.FC<IHomeTemplateProps> = ({ title, characters }) => {
         <>
             <Meta title={title} />
             <HomeContainer>
-                <Wrapper className="flex gap-3 flex-wrap justify-center">
+                <Wrapper className="flex justify-center pt-10 pb-40 bg-green">
+                    <LogoImg src="/rick-and-morty-logo.png" className="p-5 w-full md:w-1/2" />
+                </Wrapper>
+                <Wrapper className="flex flex-wrap justify-center mt-[-80px] px-5">
                     {characters.map((character: LickApi.ICharacterCore) => {
                         return (
                             <CharacterCard {...character} />
