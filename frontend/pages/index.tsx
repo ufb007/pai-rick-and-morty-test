@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
-import HomeTemplate from '@/components/Home/Home';
+import HomeTemplate from '@/components/Home';
 
 const Home: NextPage = () => {
   const [characters, setCharacters] = useState<LickApi.ICharacterCore[]>([])
