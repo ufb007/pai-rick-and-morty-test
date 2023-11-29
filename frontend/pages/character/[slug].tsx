@@ -10,14 +10,15 @@ const CharacterPage: NextPage = () => {
 
   useEffect(() => {
     if (slug !== undefined) {
-      fetch(`${process.env.apiURL}api/character/${slug}`)
-        .then((res) => {
+      fetch(`/api/characters/${slug}`)
+        .then(res => {
           if (res.status === 404) {
             throw new Error("Character not found");
           }
+
           return res.json()
         })
-        .then((character) => {
+        .then(character => {
           setCharacter(character)
         })
         .catch(error => {
@@ -26,7 +27,11 @@ const CharacterPage: NextPage = () => {
     }
   }, [slug])
 
-  return <CharacterTemplate title={`${character.name} - Rick and Morty FE Tech Test`} character={character} />;
+  if (character !== undefined) {
+    return <CharacterTemplate title={`${character.name} - Rick and Morty FE Tech Test`} character={character} />;
+  } else {
+    return (<></>)
+  }
 };
 
 export default CharacterPage;
