@@ -6,7 +6,37 @@
       "status": "Alive",
       "species": "Human",
       "gender": "Male",
-      "avatar": "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+      "avatar": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+      "origin": {
+        "id": 1,
+        "name": "Earth (C-137)",
+        "type": "Planet",
+        "dimension": "Dimension C-137",
+        "noOfResidents": 27
+      },
+      "location": {
+        "id": 20,
+        "name": "Earth (Replacement Dimension)",
+        "type": "Planet",
+        "dimension": "Replacement Dimension",
+        "noOfResidents": 139
+      },
+      "episodes": [
+        {
+          "id": 1,
+          "name": "Pilot",
+          "airDate": "December 2, 2013",
+          "noOfCharacters": 19,
+          "episode": "S01E01"
+        },
+        {
+          "id": 41,
+          "name": "Star Mort: Rickturn of the Jerri",
+          "airDate": "May 31, 2020",
+          "noOfCharacters": 13,
+          "episode": "S04E10"
+        }
+      ]
     },
     {
       "id": 48,
@@ -14,7 +44,23 @@
       "status": "Alive",
       "species": "Human",
       "gender": "Male",
-      "avatar": "https://rickandmortyapi.com/api/character/avatar/48.jpeg"
+      "avatar": "https://rickandmortyapi.com/api/character/avatar/48.jpeg",
+      "episodes": [
+        {
+          "id":22,
+          "name":"The Rickshank Rickdemption",
+          "airDate":"April 1, 2017",
+          "episode":"S03E01",
+          "noOfCharacters": 33
+        },
+        {
+          "id":28,
+          "name":"The Ricklantis Mixup",
+          "airDate":"September 10, 2017",
+          "episode":"S03E07",
+          "noOfCharacters": 65
+        }
+      ]
     },
     {
       "id": 72,
