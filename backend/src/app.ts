@@ -1,14 +1,14 @@
 import express, { Request, Response, NextFunction } from 'express';
 import tsConfig from '../tsconfig.json';
-import tsConfigPaths from 'tsconfig-paths';
+import { register } from 'tsconfig-paths';
 import 'dotenv/config';
 
-tsConfigPaths.register({
+register({
     baseUrl: './src',
     paths: tsConfig.compilerOptions.paths
 });
 
-import axios from '@utils/axios';
+import CharacterRoute from '@routes/CharacterRoute';
 
 const app = express();
 
@@ -21,13 +21,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use(express.json());
 
-app.get('/', async (req: Request, res: Response) => {
-    const getAllCharacters = await axios('/character');
-
-    console.log('Get all characters - ', getAllCharacters)
-
-    res.json({ success: true })
-})
+app.use('/character', CharacterRoute);
 
 app.listen(8080, () => {
     console.log("Listening on port 8080");
