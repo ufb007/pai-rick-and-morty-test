@@ -12,7 +12,6 @@ const CharacterPage: NextPage = () => {
     if (slug !== undefined) {
       fetch(`/api/characters/${slug}`)
         .then(res => {
-          console.log(res.status)
           if (res.status === 404) {
             throw new Error("Character not found");
           }
