@@ -9,21 +9,34 @@ class CharacterService {
     public static getAllMortys = async (name: string, status: 'alive' | 'dead' | 'unknown'): Promise<CharacterAPI.ICharacter[]> => {
         // Make request for characters with the name and status defined
         const characters = await axios(`/character/?name=${name}&status=${status}`);
-        
+
         const locationIdsForCharacters: {id: number, locationId: number}[] = [];
         const locationIds: number[] = [];
+        const episodeIdsForCharacters:  {id: number, episodeId: number}[] = [];
         const episodeIds: number[] = [];
         const aggregatedCharacters: any[] = []
 
         // Get characters core data from  
         characters.data.results.map((character: RickAndMortyAPI.ICharacterCore): void => {
-            const locationId = Number(character.location.url.substring(character.location.url.lastIndexOf('/') + 1));
+            const { location, episode } = character;
+
+            const locationId = Number(location.url.substring(location.url.lastIndexOf('/') + 1));
 
             if (!locationIds.includes(locationId)) {
                 locationIds.push(locationId);
             }
 
-            locationIdsForCharacters.push({id: character.id, locationId})
+            locationIdsForCharacters.push({ id: character.id, locationId })
+
+            episode.map((episode: string) => {
+                const episodeId = Number(episode.substring(episode.lastIndexOf('/') + 1));
+
+                if (!episodeIds.includes(episodeId)) {
+                    episodeIds.push(episodeId)
+                }
+
+                episodeIdsForCharacters.push({ id: character.id, episodeId })
+            })
 
             aggregatedCharacters.push(CharacterDTO.characterCore(character));
         });
@@ -31,26 +44,17 @@ class CharacterService {
         // Get multiple locations from one request example: https://rickandmortyapi.com/api/location/3,21
         const locations = await axios(`/location/${locationIds.join(",")}`);
 
-        aggregatedCharacters.map((character: CharacterAPI.ICharacterCore & CharacterAPI.ICharacter) => {
+        // Combine locations & episodes into one
+        aggregatedCharacters.map((character: CharacterAPI.ICharacterCore & CharacterAPI.ICharacter): void => {
             const locationId = locationIdsForCharacters.find(({ id }) => id === character.id)?.locationId;
             const location = locations.data.find(({ id }: RickAndMortyAPI.ILocationDetail) => id === locationId);
 
-            character.location = CharacterDTO.location(location)
+            character.location = CharacterDTO.location(location);
         })
 
-        console.log(aggregatedCharacters)
+        //console.log(aggregatedCharacters)
 
-        //locationIdsForCharacters.map((character) => {
-            
-        //})
-
-        // const aggregatedLocations = locations.data.map((location: RickAndMortyAPI.ILocation) => {
-
-        // })
-
-        //console.log(locations)
-        //console.log('Characters count - ', locationIdsForCharacters)
-        return characters.data
+        return aggregatedCharacters
     }
 }
 
