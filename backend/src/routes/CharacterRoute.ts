@@ -5,6 +5,6 @@ const router = Router();
 
 const character = new Character();
 
-router.get('/get-all-morty', character.getAllMortys)
+router.get('/get-all-mortys', character.getAllMortys)
 
 export default router

@@ -5,16 +5,18 @@ import CharacterDTO from "@models/ChracterDTO";
 
 // todo possible create character enum for alive | dead | unknown
 
-class CharacterService {
+export default class CharacterService {
     public static getAllMortys = async (name: string, status: 'alive' | 'dead' | 'unknown'): Promise<CharacterAPI.ICharacter[]> => {
         // Make request for characters with the name and status defined
         const characters = await axios(`/character/?name=${name}&status=${status}`);
 
         const locationIdsForCharacters: {id: number, locationId: number}[] = [];
         const locationIds: number[] = [];
+
         const episodeIdsForCharacters:  {id: number, episodeId: number}[] = [];
         const episodeIds: number[] = [];
-        const aggregatedCharacters: any[] = []
+
+        const aggregatedCharacters: any[] = [];
 
         // Get characters core data from  
         characters.data.results.map((character: RickAndMortyAPI.ICharacterCore): void => {
@@ -26,7 +28,7 @@ class CharacterService {
                 locationIds.push(locationId);
             }
 
-            locationIdsForCharacters.push({ id: character.id, locationId })
+            locationIdsForCharacters.push({ id: character.id, locationId });
 
             episode.map((episode: string) => {
                 const episodeId = Number(episode.substring(episode.lastIndexOf('/') + 1));
@@ -35,8 +37,8 @@ class CharacterService {
                     episodeIds.push(episodeId)
                 }
 
-                episodeIdsForCharacters.push({ id: character.id, episodeId })
-            })
+                episodeIdsForCharacters.push({ id: character.id, episodeId });
+            });
 
             aggregatedCharacters.push(CharacterDTO.characterCore(character));
         });
@@ -44,18 +46,27 @@ class CharacterService {
         // Get multiple locations from one request example: https://rickandmortyapi.com/api/location/3,21
         const locations = await axios(`/location/${locationIds.join(",")}`);
 
-        // Combine locations & episodes into one
+        // Get multiple episodes from one request example: https://rickandmortyapi.com/api/episode/3,21
+        const episodes = await axios(`/episode/${episodeIds.join(",")}`);
+
+        // Finally time to combine locations & episodes into one
         aggregatedCharacters.map((character: CharacterAPI.ICharacterCore & CharacterAPI.ICharacter): void => {
             const locationId = locationIdsForCharacters.find(({ id }) => id === character.id)?.locationId;
             const location = locations.data.find(({ id }: RickAndMortyAPI.ILocationDetail) => id === locationId);
 
             character.location = CharacterDTO.location(location);
-        })
 
-        //console.log(aggregatedCharacters)
+            const eps: CharacterAPI.IEpisode[] = []
+            
+            episodeIdsForCharacters.filter(({ id, episodeId }) => {
+                if (id === character.id) {
+                    eps.push(CharacterDTO.episode(episodes.data.find(({ id }: RickAndMortyAPI.IEpisodeDetail) => id === episodeId)))
+                }
+            });
 
-        return aggregatedCharacters
+            character.episodes = eps;
+        });
+
+        return aggregatedCharacters;
     }
 }
-
-export default CharacterService
