@@ -9,8 +9,7 @@ class CharacterDTO {
             status,
             species,
             gender,
-            image,
-            location
+            image
         } = character;
 
         return { id, name, status, species, gender, avatar: image }
@@ -20,6 +19,12 @@ class CharacterDTO {
         const { id, name, dimension, type, residents } = location;
 
         return { id, name, type, dimension, noOfResidents: residents.length }
+    }
+
+    public static episode(ep: RickAndMortyAPI.IEpisodeDetail): CharacterAPI.IEpisode {
+        const { id, name, air_date, episode, characters } = ep;
+
+        return { id, name, airDate: air_date, episode, noOfCharacters: characters.length }
     }
 }
 
