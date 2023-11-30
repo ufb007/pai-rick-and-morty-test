@@ -19,5 +19,12 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "skipLibCheck": true
-  }
+  },
+  "include": [
+    "src/**/*.d.ts",
+    "**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
