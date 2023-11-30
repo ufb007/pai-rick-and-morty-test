@@ -22,7 +22,7 @@ const goBackQuotes: string[] = [
 
 const CharacterTemplate: React.FC<ICharacterTemplateProps> = ({ title, character }) => {
     const [goBackQuote, setGoBackQuote] = useState<string>('')
-    const { 
+    const {
         name,
         avatar,
         episodes,
@@ -74,11 +74,11 @@ const CharacterTemplate: React.FC<ICharacterTemplateProps> = ({ title, character
                             const firstLast: string = (index === 0) ? 'First' : 'Last';
 
                             return (
-                                <>
+                                <div key={index}>
                                     <li>{firstLast} appearance: {name} {episode}</li>
                                     <li>{firstLast} appearance air date: {airDate}</li>
                                     <li>{firstLast} appearance character count: {noOfCharacters}</li>
-                                </>
+                                </div>
                             )
                         })}
                     </ul>

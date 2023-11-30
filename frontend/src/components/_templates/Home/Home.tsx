@@ -18,7 +18,7 @@ const HomeTemplate: React.FC<IHomeTemplateProps> = ({ title, characters }) => {
                 <Wrapper className="flex flex-wrap mt-[-80px] px-5">
                     {characters.map((character: LickApi.ICharacterCore) => {
                         return (
-                            <CharacterCard {...character} />
+                            <CharacterCard key={character.id} {...character} />
                         )
                     })}
                 </Wrapper>

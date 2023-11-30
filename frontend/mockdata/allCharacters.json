@@ -44,7 +44,23 @@
       "status": "Alive",
       "species": "Human",
       "gender": "Male",
-      "avatar": "https://rickandmortyapi.com/api/character/avatar/48.jpeg"
+      "avatar": "https://rickandmortyapi.com/api/character/avatar/48.jpeg",
+      "episodes": [
+        {
+          "id":22,
+          "name":"The Rickshank Rickdemption",
+          "airDate":"April 1, 2017",
+          "episode":"S03E01",
+          "noOfCharacters": 33
+        },
+        {
+          "id":28,
+          "name":"The Ricklantis Mixup",
+          "airDate":"September 10, 2017",
+          "episode":"S03E07",
+          "noOfCharacters": 65
+        }
+      ]
     },
     {
       "id": 72,
