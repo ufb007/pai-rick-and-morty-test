@@ -12,7 +12,9 @@ const singleCharacterCtrl = async (req: NextApiRequest, res: NextApiResponse) =>
   const file = await fs.readFile(`${process.cwd()}/mockdata/allCharacters.json`, 'utf-8');
   const characters = JSON.parse(file);
 
-  const character: LickApi.ICharacter = characters.data.find((character: LickApi.ICharacter) => character.id === parseInt(slug))
+  const id: number = Number(slug);
+
+  const character: LickApi.ICharacter = characters.data.find((character: LickApi.ICharacter) => character.id === id)
 
   res.status(200).json(character);
 };
