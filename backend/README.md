@@ -8,7 +8,7 @@ Project built in Node.JS/Express/TypeScript
 # install
 $ npm install
 
-# development
+# run application
 $ npm run dev
 
 # view on browser

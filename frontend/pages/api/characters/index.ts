@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { promises as fs } from 'fs';
+import Characters from '@/mockdata/allCharacters.json'
 
 /**
  * For more info on API routes please read the nextJS docs here

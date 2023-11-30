@@ -1,0 +1,11 @@
+{
+    "watch": ["src"],
+    "ext": "ts",
+    "exec": "ts-node",
+    "execMap": {
+      "ts": "ts-node"
+    },
+    "ignore": ["src/**/*.spec.ts"],
+    "require": ["tsconfig-paths/register", "ts-node/register/transpile-only"],
+    "script": "src/app.ts"
+  }
