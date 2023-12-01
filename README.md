@@ -10,7 +10,7 @@ Both Front end & Back end tasks have been completed
     - Axios used for HTTP Client for ease of use
     - Copied over the original interfaces from the LickAPI of the FE
     - Created Rick and Morty interfaces API json to type infer data from API
-    - Use a Data Transfer Object (DTO) class to create the desired format
+    - Used a Data Transfer Object (DTO) class to create the desired format
  - Used path aliases for TS
 
 #### FE Task
@@ -21,3 +21,30 @@ Both Front end & Back end tasks have been completed
  - Styled components used for template literals and Tailwindcss used for all other layout
  - Fully responsive both home characters page and single character page
  - Used path aliases for TS
+
+Instructions to install and run projects are below:
+
+#### Install node modules
+```bash
+npm install
+```
+
+#### Run BE application
+```bash
+npm run backend
+```
+
+#### Run FE application
+```bash
+npm run frontend
+```
+
+#### Backend localhost
+```bash
+http://localhost:8080/character/get-all-mortys
+```
+
+#### Frontend localhost
+```bash
+http://localhost:3000
+```
