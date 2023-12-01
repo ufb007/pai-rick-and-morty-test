@@ -1,7 +1,6 @@
 {
   "name": "rick-and-morty-fe",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--openssl-legacy-provider' next dev",
     "build": "next build",
