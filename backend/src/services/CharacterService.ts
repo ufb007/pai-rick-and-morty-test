@@ -136,6 +136,7 @@ export default class CharacterService {
 
             const aggregatedCharacter = {
                 ...CharacterDTO.characterCore(character),
+                origin: CharacterDTO.location(getLocation),
                 location: CharacterDTO.location(getLocation),
                 episodes: episodes
             };
