@@ -3,7 +3,8 @@
     "baseUrl": "./",
     "paths": {
       "@/components/*": ["src/components/_shared/*","src/components/_templates/*"],
-      "@/styles/*": ["src/components/_templates/*","styles/*"]
+      "@/styles/*": ["src/components/_templates/*","styles/*"],
+      "@/mockdata/*": ["mockdata/*"]
     },
     "target": "es5",
     "lib": [
