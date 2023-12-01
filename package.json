@@ -3,13 +3,10 @@
     "version": "1.0.0",
     "description": "",
     "private": true,
-    "workspaces": [
-        "*"
-    ],
+    "workspaces": ["*"],
     "scripts": {
-        "frontend": "yarn workspace frontend dev",
-        "backend": "yarn workspace backend dev",
-        "dev": "yarn && npm-run-all --parallel frontend backend"
+        "frontend": "yarn workspace rick-and-morty-fe dev",
+        "backend": "yarn workspace rick-and-morty-be dev"
     },
     "author": "",
     "license": "ISC",
