@@ -41,12 +41,12 @@ npm run frontend
 
 #### Backend localhost
 ```bash
-http://localhost:8080/character/get-characters
+http://localhost:8080/api/get-characters
 ```
 Or add other character name and status
 
 ```bash
-http://localhost:8080/character/get-characters/[name]/[status]
+http://localhost:8080/api/get-characters/[name]/[status]
 ```
 
 #### Frontend localhost
