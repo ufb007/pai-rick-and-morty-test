@@ -17,7 +17,7 @@ Both Front end & Back end tasks have been completed
  - Chosen stack
     - NextJS/TypeScript: Added/Edited current NextJS project instead of recreating everything from scratch
  - Layout is based on wireframes provided
- - Mockdata has be used
+ - Front end Rick and Morty data is requested from backend (Not using Mockdata)
  - Styled components used for template literals and Tailwindcss used for all other layout
  - Fully responsive both home characters page and single character page
  - Used path aliases for TS
@@ -37,6 +37,11 @@ npm run backend
 #### Run FE application
 ```bash
 npm run frontend
+```
+
+#### Run Both BE and FE from one npm command - FE needs BE to run for it to work
+```bash
+npm run both
 ```
 
 #### Backend localhost
