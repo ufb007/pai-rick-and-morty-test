@@ -21,7 +21,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use(express.json());
 
-app.use('/character', CharacterRoute);
+app.use('/api', CharacterRoute);
 
 app.listen(8080, () => {
     console.log("Listening on port 8080");
