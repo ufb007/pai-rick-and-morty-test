@@ -1,10 +1,8 @@
 import React from "react"
-import { useRouter } from "next/dist/client/router"
 import { CharacterContainer, AvatarImg } from "./Character.styled"
+import CharacterButton from "@/components/characters/CharacterButton"
 
 const CharacterCard = ({ id, name, gender, species, avatar }: LickApi.ICharacterCore) => {
-    const router = useRouter()
-
     return (
         <CharacterContainer className="w-full sm:w-1/2 md:w-1/4 lg:w-1/5 xl:w-1/6 px-10 md:px-5 text-white flex flex-col mb-10 md:mb-[100px] cursor-pointer">
             <AvatarImg src={avatar} className="w-full" />
@@ -13,7 +11,7 @@ const CharacterCard = ({ id, name, gender, species, avatar }: LickApi.ICharacter
                 <li>Gender: { gender }</li>
                 <li>Species: { species }</li>
             </ul>
-            <button className="uppercase bg-green text-black py-2 hover:font-schwifty" onClick={() => router.push(`/character/${id}`)}>View Profile</button>
+            <CharacterButton title="View Profile" link={`/character/${id}`} />
         </CharacterContainer>
     )
 }
