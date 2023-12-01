@@ -71,15 +71,21 @@ const CharacterTemplate: React.FC<ICharacterTemplateProps> = ({ title, character
                     <Name className="font-schwifty text-3xl">Episodes: { episodes?.length }</Name>
                     <ul className="flex flex-col gap-2 mt-5">
                         {episodes?.map(({ name, episode, airDate, noOfCharacters }: LickApi.IEpisode, index) => {
-                            const firstLast: string = (index === 0) ? 'First' : 'Last';
+                            let firstLast: string = (index === 0) ? 'First' : 'Last';
 
-                            return (
-                                <div key={index}>
-                                    <li>{firstLast} appearance: {name} {episode}</li>
-                                    <li>{firstLast} appearance air date: {airDate}</li>
-                                    <li>{firstLast} appearance character count: {noOfCharacters}</li>
-                                </div>
-                            )
+                            if (episodes.length === 1) {
+                                firstLast = 'First and last'
+                            }
+
+                            if (index === 0 || index === episodes.length - 1) {
+                                return (
+                                    <div key={index}>
+                                        <li>{firstLast} appearance: {name} {episode}</li>
+                                        <li>{firstLast} appearance air date: {airDate}</li>
+                                        <li>{firstLast} appearance character count: {noOfCharacters}</li>
+                                    </div>
+                                )
+                            }
                         })}
                     </ul>
                 </Wrapper>

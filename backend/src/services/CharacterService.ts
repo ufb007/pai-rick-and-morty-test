@@ -2,7 +2,8 @@ import axios from "@utils/axios"
 import RickAndMortyAPI from "@interfaces/rick-and-morty-api";
 import CharacterAPI from "@interfaces/character-api";
 import CharacterDTO from "@models/ChracterDTO";
-import { AxiosError, AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
+import { response } from "express";
 
 // todo possible create character enum for alive | dead | unknown
 
@@ -15,6 +16,10 @@ type CharacterInfoType = {
 type RickAndMortyResponseType = {
     info: CharacterInfoType,
     results: RickAndMortyAPI.ICharacterCore[]
+}
+
+type RickAndMortySingleCharacterResponseType = {
+    data: RickAndMortyAPI.ICharacterCore
 }
 
 type ErrorResponseType = {
@@ -100,6 +105,42 @@ export default class CharacterService {
             });
 
             return aggregatedCharacters;
+        } catch (error: any) {
+            return { message: error.response.data.error }
+        }
+    }
+
+    public static getSingleCharacter = async (id: number) => {
+        try {
+            const character = await axios(`/character/${id}`)
+                .then((response: AxiosResponse<RickAndMortyAPI.ICharacterCore>) => response.data)
+
+            const { location, episode } = character;
+            const locationId = Number(location.url.substring(location.url.lastIndexOf('/') + 1))
+            const getLocation = await axios(`/location/${locationId}`).then((response: AxiosResponse<RickAndMortyAPI.ILocationDetail>) => response.data);
+
+            const episodeIds: number[] = [];
+
+            character.episode.map((episode: string) => {
+                const episodeId = Number(episode.substring(episode.lastIndexOf('/') + 1));
+                episodeIds.push(episodeId);
+            });
+
+            let getEpisodes = await axios(`/episode/${episodeIds.join(",")}`).then((response: AxiosResponse<RickAndMortyAPI.IEpisodeDetail[]>) => response.data);
+
+            if (!Array.isArray(getEpisodes)) {
+                getEpisodes = [getEpisodes]
+            }
+
+            const episodes = getEpisodes.map((episode) => CharacterDTO.episode(episode))
+
+            const aggregatedCharacter = {
+                ...CharacterDTO.characterCore(character),
+                location: CharacterDTO.location(getLocation),
+                episodes: episodes
+            };
+            
+            return aggregatedCharacter
         } catch (error: any) {
             return { message: error.response.data.error }
         }

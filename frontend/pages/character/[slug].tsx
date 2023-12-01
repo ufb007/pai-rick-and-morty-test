@@ -10,7 +10,7 @@ const CharacterPage: NextPage = () => {
 
   useEffect(() => {
     if (slug !== undefined) {
-      fetch(`/api/characters/${slug}`)
+      fetch(`${process.env.apiURL}/get-single-character/${slug}`)
         .then(res => {
           if (res.status === 404) {
             throw new Error("Character not found");
@@ -18,8 +18,8 @@ const CharacterPage: NextPage = () => {
 
           return res.json()
         })
-        .then(character => {
-          setCharacter(character)
+        .then(response => {
+          setCharacter(response.character)
         })
         .catch(error => {
           router.replace('/404')

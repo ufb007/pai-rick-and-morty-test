@@ -1,6 +1,6 @@
 module.exports = {
   poweredByHeader: false,
   env: {
-    apiURL: 'https://rickandmortyapi.com/'
+    apiURL: 'http://localhost:8080/api'
   }
 }

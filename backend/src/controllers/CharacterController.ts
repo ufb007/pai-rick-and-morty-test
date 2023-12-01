@@ -6,6 +6,10 @@ type ParamsType = {
     status: 'alive' | 'dead' | 'unknown'
 }
 
+type IdType = {
+    id: number
+}
+
 export default class Character {
     public async getCharacters(req: Request<ParamsType>, res: Response) {
         const { name, status }: ParamsType = { 
@@ -15,6 +19,16 @@ export default class Character {
 
         const characters = await CharacterService.getCharacters(name, status);
 
-        return res.json({ characters: characters });
+        return res.json({ characters });
+    }
+
+    public async getSingleCharacter(req: Request, res: Response) {
+        const { id }: IdType = {
+            id: Number(req.params.id)
+        }
+
+        const character = await CharacterService.getSingleCharacter(id);
+
+        return res.json({ character })
     }
 }
