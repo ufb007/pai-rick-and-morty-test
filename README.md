@@ -6,6 +6,13 @@ Both Front end & Back end tasks have been completed
 #### BE Task
  - Chosen stack
     - Node.JS/Express and TypeScript
+ - Chosen architecture
+    - The BE model are designed to seperate core modules such as controllers. modes, services, routes
+      - controller to return final json aggregated data from service
+      - service - aggregated logic development
+      - interfaces - TypeScript interfaces seprated and imported
+      - models - object logic. Added DTO class
+      - Utilities - function/features shared accross project
  - Chosen method for fetching and aggregating data
     - Axios used for HTTP Client for ease of use
     - Copied over the original interfaces from the LickAPI of the FE
@@ -21,6 +28,8 @@ Both Front end & Back end tasks have been completed
  - Styled components used for template literals and Tailwindcss used for all other layout
  - Fully responsive both home characters page and single character page
  - Used path aliases for TS
+
+There was a bit of a learning curve with NextJS but I am happy with the result
 
 Instructions to install and run projects are below:
 
