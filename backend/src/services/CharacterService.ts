@@ -24,6 +24,7 @@ export default class CharacterService {
 
             const locationId = Number(location.url.substring(location.url.lastIndexOf('/') + 1));
 
+            // Avoiding duplicates
             if (!locationIds.includes(locationId)) {
                 locationIds.push(locationId);
             }
@@ -33,6 +34,7 @@ export default class CharacterService {
             episode.map((episode: string) => {
                 const episodeId = Number(episode.substring(episode.lastIndexOf('/') + 1));
 
+                // Avoiding duplicates
                 if (!episodeIds.includes(episodeId)) {
                     episodeIds.push(episodeId)
                 }

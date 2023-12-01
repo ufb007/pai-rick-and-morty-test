@@ -1,34 +1,23 @@
-# P.ai FullStack Test
+# P.ai FullStack Test - Front-end & Back-end
 
 ### The Challenge
-The challenge is split into two parts. Depending on where your strengths lie feel free to tackle 1 or both of the tasks.
-
-We use NextJS for the FE and Python for the BE but feel free to use your stack of choice. Both the BE and FE tasks can be accomplished in the same repo. 
+Both Front end & Back end tasks have been completed
 
 #### BE Task
-Create a custom rest API to pre-filter all required data needed. The required data includes getting all Alive Morty characters along with all of their associated data types Origin, Location and Episode data from the Rick and Mort API. https://rickandmortyapi.com/. Please ensure you read the docs thoroughly https://rickandmortyapi.com/documentation.
-
-The interfaces in the codebase will show you what the data structure **must** look like, if you need to extend them, feel free! However, the original structure must stay unchanged.
+ - Chosen stack
+    - Node.JS/Express and TypeScript
+ - Chosen method for fetching and aggregating data
+    - Axios used for HTTP Client for ease of use
+    - Copied over the original interfaces from the LickAPI of the FE
+    - Created Rick and Morty interfaces API json to type infer data from API
+    - Use a Data Transfer Object (DTO) class to create the desired format
+ - Used path aliases for TS
 
 #### FE Task
-Build a simple UI to list all characters using the mockdata provided and using the basic wireframes provided. There is mockdata for the character listing page and for the individual character page. The pages themselves have been added.
-
-##### Please ensure your work checks all the points below – it’s what we will be looking out for
-
-- Your chosen method for fetching and aggregating data. (BE only)
-- Chosen folder structure
-- The layout should be based on the wireframes provided.
-- Final work (whether complete or part complete) should be submitted in a git repository. (ideally we would like to see a commit history of some sort). With a README.md file, so we can run the app locally and test it ourselves.
-- For the BE task **DO NOT use the Rick and Morty JavaScript library**. We want to see how you architect aggregating data.
-- The site should be built using HTML, CSS and JavaScript (TypeScript), and as far as styling is concerned: SCSS, Post CSS, CSS Modules, and CSS-in-JS are all encouraged.
-
-### Taking things further:
-(Not a requirement but if you think it will help us assess your skill level and passion).  If you have the time, here are some suggestions to enhance the app:
-
-- Add eslint and a config
-- Add prettier and a config
-- Unit tests
-- Use path aliases for TS
-- Introduce a build pipeline using Github CI / Circle CI or other CI tools.
-- Responsive images (FE task)
-- Performance optimisation (add a cache layer) - BE Task
+ - Chosen stack
+    - NextJS/TypeScript: Added/Edited current NextJS project instead of recreating everything from scratch
+ - Layout is based on wireframes provided
+ - Mockdata has be used
+ - Styled components used for template literals and Tailwindcss used for all other layout
+ - Fully responsive both home characters page and single character page
+ - Used path aliases for TS
