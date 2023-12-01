@@ -11,16 +11,7 @@ const Home: NextPage = () => {
       .then((response) => {
         setCharacters(response.characters)
       })
-  }, [])
-
-
-  /*useEffect(() => {
-    fetch('/api/characters')
-      .then((res) => res.json())
-      .then((characters) => {
-        setCharacters(characters.data)
-      })
-  }, [])*/
+  }, []);
 
   return <HomeTemplate title="Rick and Morty FE Tech Test" characters={ characters } />;
 };
