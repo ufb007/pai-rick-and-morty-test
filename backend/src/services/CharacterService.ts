@@ -22,7 +22,7 @@ type ErrorResponseType = {
 }
 
 export default class CharacterService {
-    public static getAllMortys = async (name: string, status: 'alive' | 'dead' | 'unknown'): Promise<CharacterAPI.ICharacter[] | ErrorResponseType> => {
+    public static getCharacters = async (name: string, status: 'alive' | 'dead' | 'unknown'): Promise<CharacterAPI.ICharacter[] | ErrorResponseType> => {
         try {
             // Make request for characters with the name and status defined
             const characters: RickAndMortyAPI.ICharacterCore[] = [];

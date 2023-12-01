@@ -41,7 +41,12 @@ npm run frontend
 
 #### Backend localhost
 ```bash
-http://localhost:8080/character/get-all-mortys
+http://localhost:8080/character/get-characters
+```
+Or add other character name and status
+
+```bash
+http://localhost:8080/character/get-characters/[name]/[status]
 ```
 
 #### Frontend localhost

@@ -5,6 +5,10 @@ const router = Router();
 
 const character = new Character();
 
-router.get('/get-all-mortys', character.getAllMortys)
+// Returns all alive mortys
+router.get('/get-characters/', character.getCharacters)
+
+// Returns characters based on params name and status
+router.get('/get-characters/:name/:status', character.getCharacters)
 
 export default router
