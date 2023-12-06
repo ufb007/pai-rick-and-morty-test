@@ -134,7 +134,7 @@ export default class CharacterService {
 
             const episodes = getEpisodes.map((episode) => CharacterDTO.episode(episode))
 
-            const aggregatedCharacter = {
+            const aggregatedCharacter: CharacterAPI.ICharacter = {
                 ...CharacterDTO.characterCore(character),
                 origin: CharacterDTO.location(getLocation),
                 location: CharacterDTO.location(getLocation),
